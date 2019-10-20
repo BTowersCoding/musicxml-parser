@@ -1,4 +1,9 @@
-(ns musicxml-parser.core)
+(ns musicxml-parser.core
+  (:require [clojure.data.xml :refer [parse]]))
+
+(def myscore
+  (let [input-xml (java.io.StringReader. (slurp "score.xml"))]
+    (parse input-xml)))
 
 (defn get-measures [score]
   (:content (nth (:content score) 7)))
