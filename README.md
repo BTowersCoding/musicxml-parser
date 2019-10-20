@@ -9,4 +9,4 @@ A Clojure library designed to extract music data and spit out a sequence of maps
  :duration 0.25}
 ```
 
-`:time` (start time, "note-on") and `:duration` are measured in "beats", as defined by the piece (typically a quarter-note). `:pitch` is expressed in standard MIDI notation (60 is middle C).
+`:time` (start time, "note-on") and `:duration` are measured in "beats", as defined by the piece (typically a quarter-note). `:pitch` is expressed in standard MIDI notation. 60 is middle C, and each integer represents one semitone
