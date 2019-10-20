@@ -1,6 +1,6 @@
 # musicxml-parser
 
-A Clojure library designed to extract music data and spit out a sequence of maps, each representing a note and its attributes:
+A Clojure/Clojurescript library designed to extract music data and spit out a sequence of maps, each representing a note and its attributes:
 
 ```
 {:instrument "bass"
