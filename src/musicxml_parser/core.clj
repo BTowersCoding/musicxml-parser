@@ -1,86 +1,57 @@
 (ns musicxml-parser.core
-  (:require [clojure.data.xml :refer [parse]]))
+  (:require [clojure.xml :as xml]
+            [clojure.zip :as zip]
+            [clojure.java.io :as io]
+            [clojure.data.zip.xml :as zip-xml])
+  (:import (javax.xml.parsers SAXParser SAXParserFactory)))
 
-(def myscore
-  (let [input-xml (java.io.StringReader. (slurp "score.xml"))]
-    (parse input-xml)))
+;; MusicXML example set: https://www.musicxml.com/music-in-musicxml/example-set/
 
-(defn get-measures [score]
-  (:content (nth (:content score) 7)))
+(defn startparse-sax
+  "Don't validate the DTDs, they are usually messed up."
+  [s ch]
+  (let [factory (SAXParserFactory/newInstance)]
+    (.setFeature factory "http://apache.org/xml/features/nonvalidating/load-external-dtd" false)
+    (let [^SAXParser parser (.newSAXParser factory)]
+      (.parse parser s ch))))
 
-(defn get-tag [tag content]
-  (filter #(= tag (get % :tag))
-          (:content content)))
+(defn meta->map
+  [root]
+  (into {}
+        (for [m (zip-xml/xml-> root :head :meta)]
+          [(keyword (zip-xml/attr m :type))
+           (zip-xml/text m)])))
 
-(defn extract-notes [measure]
-  (get-tag :note measure))
+(defn segment->map
+  [seg]
+  {:bytes  (Long/valueOf (zip-xml/attr seg :bytes))
+   :number (Integer/valueOf (zip-xml/attr seg :number))
+   :id     (zip-xml/xml1-> seg zip-xml/text)})
 
-(defn get-pitch [note]
-  (first (get-tag :pitch note)))
+(defn file->map
+  [file]
+  {:poster   (zip-xml/attr file :poster)
+   :date     (Long/valueOf (zip-xml/attr file :date))
+   :subject  (zip-xml/attr file :subject)
+   :groups   (vec (zip-xml/xml-> file :groups :group zip-xml/text))
+   :segments (mapv segment->map
+                   (zip-xml/xml-> file :segments :segment))})
 
-(defn get-attr [attr note]
-  (first (:content (first (get-tag attr note)))))
+(defn nzb->map [input]
+  (let [root (-> input
+                 io/input-stream
+                 (xml/parse startparse-sax)
+                 zip/xml-zip)]
+    {:meta  (meta->map root)
+     :files (mapv file->map (zip-xml/xml-> root :file))}))
 
-(defn get-duration [note]
-  (js/parseInt (get-attr :duration note)))
+(-> "resources/example.nzb"
+    io/input-stream
+    (xml/parse startparse-sax)
+    zip/xml-zip)
 
-(defn get-voice [note]
-  (js/parseInt (get-attr :voice note)))
+(io/input-stream "resources/example.nzb")
 
-(defn extract-voice [measure voice]
-  (filter #(= voice (get-voice %)) (get-tag :note measure)))
+(nzb->map "resources/Piano-Sonata-n01.musicxml")
 
-(defn get-step [pitch]
-  (get-attr :step pitch))
-
-(defn get-octave [pitch]
-  (js/parseInt
-   (get-attr :octave pitch)))
-
-(defn get-alter [pitch]
-  (js/parseInt
-   (get-attr :alter pitch)))
-
-(defn pitch->midi [pitch]
-  (let [base-pitch (+ 12 (* 12 (get-octave pitch)))
-        pitch-steps (zipmap ["C" "D" "E" "F" "G" "A" "B"]
-                            [0 2 4 5 7 9 11])
-        step (get-step pitch)
-        alter (if (int? (get-alter pitch))
-                (get-alter pitch)
-                0)]
-    (+ (get pitch-steps step)
-       base-pitch
-       alter)))
-
-(defn parse-note [note time]
-  {:time time
-   :pitch (+ (+ (pitch->midi (get-pitch note))
-                (case (get-voice note)
-                  5 12
-                  0)) 6)
-   :instrument (case (get-voice note)
-                 5 15
-                 1 14)})
-
-(defn parse-measure [measure voice]
-  (loop [time 1
-         notes (extract-voice measure voice)
-         result []]
-    (if (empty? notes)
-      result
-      (recur (+ time (/ (get-duration (first notes)) 6))
-             (rest notes)
-             (conj result (parse-note (first notes)
-                                      time))))))
-
-(defn parse-voice [voice score]
-  (loop [time 1
-         notes (flatten (map #(extract-voice % voice) (get-measures score)))
-         result []]
-    (if (empty? notes)
-      result
-      (recur (+ time (/ (get-duration (first notes)) 6))
-             (rest notes)
-             (conj result (parse-note (first notes)
-                                      time))))))
+(nzb->map "resources/example.nzb")

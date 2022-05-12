@@ -1,0 +1,605 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Starting Jack-in Terminal: java -jar ".calva\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,""0.9.0""},cider/cider-nrepl {:mvn/version,""0.27.4""}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉>  ; Use `alt+enter` to evaluate
+; Jack-in done.
+clj꞉user꞉> 
+nil
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IOException) at sun.net.www.protocol.http.HttpURLConnection/getInputStream0 (REPL:-1).
+; Server returned HTTP response code: 403 for URL: http://www.musicxml.org/dtds/partwise.dtd
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/doc
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IOException) at sun.net.www.protocol.http.HttpURLConnection/getInputStream0 (REPL:-1).
+; Server returned HTTP response code: 403 for URL: http://www.musicxml.org/dtds/partwise.dtd
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IOException) at sun.net.www.protocol.http.HttpURLConnection/getInputStream0 (REPL:-1).
+; Server returned HTTP response code: 403 for URL: http://www.musicxml.org/dtds/partwise.dtd
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/xml-string
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/parse-xml-string
+clj꞉musicxml-parser.core꞉> 
+nil
+clj꞉musicxml-parser.core꞉> 
+{:tag :item, :attrs nil, :content [{:tag :title, :attrs nil, :content ["Foo"]}]}
+clj꞉musicxml-parser.core꞉> 
+nil
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IllegalArgumentException) at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl/parse (REPL:-1).
+; null
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IllegalArgumentException) at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl/parse (REPL:-1).
+; null
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IllegalArgumentException) at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl/parse (REPL:-1).
+; null
+clj꞉musicxml-parser.core꞉> 
+{:tag :book,
+ :attrs nil,
+ :content
+ [{:tag :frontmatter, :attrs nil, :content nil}
+  {:tag :chapter,
+   :attrs {:name "Introduction"},
+   :content
+   [{:tag :para, :attrs nil, :content ["Here is the intro"]} {:tag :para, :attrs nil, :content ["Another paragraph"]}]}
+  {:tag :chapter, :attrs {:name "Conclusion"}, :content [{:tag :para, :attrs nil, :content ["All done now"]}]}]}
+clj꞉musicxml-parser.core꞉> 
+{:tag :nzb,
+ :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+ :content
+ [{:tag :head,
+   :attrs nil,
+   :content
+   [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+    {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+  {:tag :file,
+   :attrs
+   {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+    :date "1071674882",
+    :poster "Joe Bloggs <bloggs@nowhere.example>"},
+   :content
+   [{:tag :groups,
+     :attrs nil,
+     :content
+     [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+      {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+    {:tag :segments,
+     :attrs nil,
+     :content
+     [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+      {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}
+clj꞉musicxml-parser.core꞉> 
+[{:tag :nzb,
+  :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+  :content
+  [{:tag :head,
+    :attrs nil,
+    :content
+    [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+     {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+   {:tag :file,
+    :attrs
+    {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+     :date "1071674882",
+     :poster "Joe Bloggs <bloggs@nowhere.example>"},
+    :content
+    [{:tag :groups,
+      :attrs nil,
+      :content
+      [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+       {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+     {:tag :segments,
+      :attrs nil,
+      :content
+      [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+       {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}
+ nil]
+clj꞉musicxml-parser.core꞉> 
+; Execution error (FileNotFoundException) at musicxml-parser.core/eval5576$loading (REPL:1).
+; Could not locate clojure/data/zip/xml__init.class, clojure/data/zip/xml.clj or clojure/data/zip/xml.cljc on classpath.
+clj꞉musicxml-parser.core꞉> 
+; nREPL Connection was closed
+; Jacking in...
+; Starting Jack-in Terminal: java -jar ".calva\deps.clj.jar" -Sdeps "{:deps {nrepl/nrepl {:mvn/version,""0.9.0""},cider/cider-nrepl {:mvn/version,""0.27.4""}}}" -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+nil
+clj꞉musicxml-parser.core꞉> 
+nil
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IllegalArgumentException) at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl/parse (REPL:-1).
+; null
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IllegalArgumentException) at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl/parse (REPL:-1).
+; null
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IllegalArgumentException) at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl/parse (REPL:-1).
+; null
+clj꞉musicxml-parser.core꞉> 
+#function[clojure.xml/parse]
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IllegalArgumentException) at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl/parse (REPL:-1).
+; null
+clj꞉musicxml-parser.core꞉> 
+nil
+clj꞉musicxml-parser.core꞉> 
+{:tag :nzb,
+ :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+ :content
+ [{:tag :head,
+   :attrs nil,
+   :content
+   [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+    {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+  {:tag :file,
+   :attrs
+   {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+    :date "1071674882",
+    :poster "Joe Bloggs <bloggs@nowhere.example>"},
+   :content
+   [{:tag :groups,
+     :attrs nil,
+     :content
+     [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+      {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+    {:tag :segments,
+     :attrs nil,
+     :content
+     [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+      {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}
+clj꞉musicxml-parser.core꞉> 
+[{:tag :nzb,
+  :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+  :content
+  [{:tag :head,
+    :attrs nil,
+    :content
+    [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+     {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+   {:tag :file,
+    :attrs
+    {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+     :date "1071674882",
+     :poster "Joe Bloggs <bloggs@nowhere.example>"},
+    :content
+    [{:tag :groups,
+      :attrs nil,
+      :content
+      [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+       {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+     {:tag :segments,
+      :attrs nil,
+      :content
+      [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+       {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}
+ nil]
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/root
+clj꞉musicxml-parser.core꞉> 
+[{:tag :nzb,
+  :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+  :content
+  [{:tag :head,
+    :attrs nil,
+    :content
+    [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+     {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+   {:tag :file,
+    :attrs
+    {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+     :date "1071674882",
+     :poster "Joe Bloggs <bloggs@nowhere.example>"},
+    :content
+    [{:tag :groups,
+      :attrs nil,
+      :content
+      [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+       {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+     {:tag :segments,
+      :attrs nil,
+      :content
+      [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+       {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}
+ nil]
+clj꞉musicxml-parser.core꞉> 
+{:title "Your File!", :tag "Example"}
+clj꞉musicxml-parser.core꞉> 
+([{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+  {:l [],
+   :pnodes
+   [{:tag :nzb,
+     :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+     :content
+     [{:tag :head,
+       :attrs nil,
+       :content
+       [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+        {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+      {:tag :file,
+       :attrs
+       {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+        :date "1071674882",
+        :poster "Joe Bloggs <bloggs@nowhere.example>"},
+       :content
+       [{:tag :groups,
+         :attrs nil,
+         :content
+         [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+          {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+        {:tag :segments,
+         :attrs nil,
+         :content
+         [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+          {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}
+    {:tag :head,
+     :attrs nil,
+     :content
+     [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+      {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}],
+   :ppath
+   {:l [],
+    :pnodes
+    [{:tag :nzb,
+      :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+      :content
+      [{:tag :head,
+        :attrs nil,
+        :content
+        [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+         {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+       {:tag :file,
+        :attrs
+        {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+         :date "1071674882",
+         :poster "Joe Bloggs <bloggs@nowhere.example>"},
+        :content
+        [{:tag :groups,
+          :attrs nil,
+          :content
+          [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+           {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+         {:tag :segments,
+          :attrs nil,
+          :content
+          [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+           {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}],
+    :ppath nil,
+    :r
+    ({:tag :file,
+      :attrs
+      {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+       :date "1071674882",
+       :poster "Joe Bloggs <bloggs@nowhere.example>"},
+      :content
+      [{:tag :groups,
+        :attrs nil,
+        :content
+        [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+         {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+       {:tag :segments,
+        :attrs nil,
+        :content
+        [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+         {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]})},
+   :r ({:tag :meta, :attrs {:type "tag"}, :content ["Example"]})}]
+ [{:tag :meta, :attrs {:type "tag"}, :content ["Example"]}
+  {:l [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}],
+   :pnodes
+   [{:tag :nzb,
+     :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+     :content
+     [{:tag :head,
+       :attrs nil,
+       :content
+       [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+        {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+      {:tag :file,
+       :attrs
+       {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+        :date "1071674882",
+        :poster "Joe Bloggs <bloggs@nowhere.example>"},
+       :content
+       [{:tag :groups,
+         :attrs nil,
+         :content
+         [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+          {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+        {:tag :segments,
+         :attrs nil,
+         :content
+         [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+          {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}
+    {:tag :head,
+     :attrs nil,
+     :content
+     [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+      {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}],
+   :ppath
+   {:l [],
+    :pnodes
+    [{:tag :nzb,
+      :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+      :content
+      [{:tag :head,
+        :attrs nil,
+        :content
+        [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+         {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+       {:tag :file,
+        :attrs
+        {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+         :date "1071674882",
+         :poster "Joe Bloggs <bloggs@nowhere.example>"},
+        :content
+        [{:tag :groups,
+          :attrs nil,
+          :content
+          [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+           {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+         {:tag :segments,
+          :attrs nil,
+          :content
+          [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+           {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}],
+    :ppath nil,
+    :r
+    ({:tag :file,
+      :attrs
+      {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+       :date "1071674882",
+       :poster "Joe Bloggs <bloggs@nowhere.example>"},
+      :content
+      [{:tag :groups,
+        :attrs nil,
+        :content
+        [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+         {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+       {:tag :segments,
+        :attrs nil,
+        :content
+        [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+         {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]})},
+   :r nil}])
+clj꞉musicxml-parser.core꞉> 
+{:title "Your File!", :tag "Example"}
+clj꞉musicxml-parser.core꞉> 
+([:title "Your File!"] [:tag "Example"])
+clj꞉musicxml-parser.core꞉> 
+nil
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/meta->map
+clj꞉musicxml-parser.core꞉> 
+#function[musicxml-parser.core/meta->map]
+clj꞉musicxml-parser.core꞉> 
+{:title "Your File!", :tag "Example"}
+clj꞉musicxml-parser.core꞉> 
+; Syntax error compiling at (c:\Users\porko\Documents\GitHub\musicxml-parser\src\musicxml_parser\core.clj:33:18).
+; Unable to resolve symbol: startparse-sax in this context
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/startparse-sax
+clj꞉musicxml-parser.core꞉> 
+; Syntax error compiling at (c:\Users\porko\Documents\GitHub\musicxml-parser\src\musicxml_parser\core.clj:36:13).
+; Unable to resolve symbol: file->map in this context
+clj꞉musicxml-parser.core꞉> 
+; Syntax error compiling at (c:\Users\porko\Documents\GitHub\musicxml-parser\src\musicxml_parser\core.clj:35:14).
+; Unable to resolve symbol: segment->map in this context
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/segment->map
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/file->map
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/nzb->map
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IllegalArgumentException) at musicxml-parser.core/nzb->map (REPL:48).
+; Cannot open <[{:tag :nzb, :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"}, :content [{:tag :head, :attrs nil, :content [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]} {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]} {:tag :file, :attrs {:subject "Here's your file!  abc-mr2a.r01 (1/2)", :date "1071674882", :poster "Joe Bloggs <bloggs@nowhere.example>"}, :content [{:tag :groups, :attrs nil, :content [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]} {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]} {:tag :segments, :attrs nil, :content [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]} {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]} nil]> as an InputStream.
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/nzb->map
+clj꞉musicxml-parser.core꞉> 
+{:meta {:title "Your File!", :tag "Example"},
+ :files
+ [{:poster "Joe Bloggs <bloggs@nowhere.example>",
+   :date 1071674882,
+   :subject "Here's your file!  abc-mr2a.r01 (1/2)",
+   :groups ["alt.binaries.newzbin" "alt.binaries.mojo"],
+   :segments
+   [{:bytes 102394, :number 1, :id "123456789abcdef@news.newzbin.com"}
+    {:bytes 4501, :number 2, :id "987654321fedbca@news.newzbin.com"}]}]}
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/nzb->map
+clj꞉musicxml-parser.core꞉> 
+{:meta {:title "Your File!", :tag "Example"},
+ :files
+ [{:poster "Joe Bloggs <bloggs@nowhere.example>",
+   :date 1071674882,
+   :subject "Here's your file!  abc-mr2a.r01 (1/2)",
+   :groups ["alt.binaries.newzbin" "alt.binaries.mojo"],
+   :segments
+   [{:bytes 102394, :number 1, :id "123456789abcdef@news.newzbin.com"}
+    {:bytes 4501, :number 2, :id "987654321fedbca@news.newzbin.com"}]}]}
+clj꞉musicxml-parser.core꞉> 
+; Syntax error compiling at (c:\Users\porko\Documents\GitHub\musicxml-parser\src\musicxml_parser\core.clj:55:1).
+; Unable to resolve symbol: beethoven in this context
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IOException) at sun.net.www.protocol.http.HttpURLConnection/getInputStream0 (REPL:-1).
+; Server returned HTTP response code: 403 for URL: http://www.musicxml.org/dtds/partwise.dtd
+clj꞉musicxml-parser.core꞉> 
+{:meta {:title "Your File!", :tag "Example"},
+ :files
+ [{:poster "Joe Bloggs <bloggs@nowhere.example>",
+   :date 1071674882,
+   :subject "Here's your file!  abc-mr2a.r01 (1/2)",
+   :groups ["alt.binaries.newzbin" "alt.binaries.mojo"],
+   :segments
+   [{:bytes 102394, :number 1, :id "123456789abcdef@news.newzbin.com"}
+    {:bytes 4501, :number 2, :id "987654321fedbca@news.newzbin.com"}]}]}
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IOException) at sun.net.www.protocol.http.HttpURLConnection/getInputStream0 (REPL:-1).
+; Server returned HTTP response code: 403 for URL: http://www.musicxml.org/dtds/partwise.dtd
+clj꞉musicxml-parser.core꞉> 
+{:meta {:title "Your File!", :tag "Example"},
+ :files
+ [{:poster "Joe Bloggs <bloggs@nowhere.example>",
+   :date 1071674882,
+   :subject "Here's your file!  abc-mr2a.r01 (1/2)",
+   :groups ["alt.binaries.newzbin" "alt.binaries.mojo"],
+   :segments
+   [{:bytes 102394, :number 1, :id "123456789abcdef@news.newzbin.com"}
+    {:bytes 4501, :number 2, :id "987654321fedbca@news.newzbin.com"}]}]}
+clj꞉musicxml-parser.core꞉> 
+; Evaluating file: core.clj
+; Execution error (SAXParseException) at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper/createSAXParseException (REPL:-1).
+; The markup declarations contained or pointed to by the document type declaration must be well-formed.
+; Evaluation of file core.clj failed: class clojure.lang.Compiler$CompilerException
+clojure.lang.Compiler$InvokeExpr/eval (Compiler.java:3711)
+clojure.lang.Compiler$DefExpr/eval (Compiler.java:457)
+clojure.lang.Compiler/eval (Compiler.java:7186)
+clojure.lang.Compiler/load (Compiler.java:7640)
+musicxml-parser.core/eval5655 (NO_SOURCE_FILE:1)
+clojure.lang.Compiler/eval (Compiler.java:7181)
+clojure.core/eval (core.clj:3202)
+clojure.core/eval (core.clj:3198)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:87)
+clojure.core/apply (core.clj:667)
+clojure.core/with-bindings* (core.clj:1977)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:87)
+clojure.main/repl (main.clj:437)
+clojure.main/repl (main.clj:458)
+clojure.main/repl (main.clj:368)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:84)
+nrepl.middleware.interruptible-eval/evaluate (interruptible_eval.clj:56)
+nrepl.middleware.interruptible-eval/interruptible-eval (interruptible_eval.clj:152)
+nrepl.middleware.session/session-exec (session.clj:218)
+nrepl.middleware.session/session-exec (session.clj:217)
+java.lang.Thread/run (:-1)
+clj꞉musicxml-parser.core꞉> 
+nil
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/startparse-sax
+clj꞉musicxml-parser.core꞉> 
+; Execution error (SAXParseException) at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper/createSAXParseException (REPL:-1).
+; The markup declarations contained or pointed to by the document type declaration must be well-formed.
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/startparse-sax
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/nzb->map
+clj꞉musicxml-parser.core꞉> 
+{:meta {:title "Your File!", :tag "Example"},
+ :files
+ [{:poster "Joe Bloggs <bloggs@nowhere.example>",
+   :date 1071674882,
+   :subject "Here's your file!  abc-mr2a.r01 (1/2)",
+   :groups ["alt.binaries.newzbin" "alt.binaries.mojo"],
+   :segments
+   [{:bytes 102394, :number 1, :id "123456789abcdef@news.newzbin.com"}
+    {:bytes 4501, :number 2, :id "987654321fedbca@news.newzbin.com"}]}]}
+clj꞉musicxml-parser.core꞉> 
+{:meta {:title "Your File!", :tag "Example"},
+ :files
+ [{:poster "Joe Bloggs <bloggs@nowhere.example>",
+   :date 1071674882,
+   :subject "Here's your file!  abc-mr2a.r01 (1/2)",
+   :groups ["alt.binaries.newzbin" "alt.binaries.mojo"],
+   :segments
+   [{:bytes 102394, :number 1, :id "123456789abcdef@news.newzbin.com"}
+    {:bytes 4501, :number 2, :id "987654321fedbca@news.newzbin.com"}]}]}
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IOException) at sun.net.www.protocol.http.HttpURLConnection/getInputStream0 (REPL:-1).
+; Server returned HTTP response code: 403 for URL: http://www.musicxml.org/dtds/partwise.dtd
+clj꞉musicxml-parser.core꞉> 
+; Execution error (SAXParseException) at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper/createSAXParseException (REPL:-1).
+; The markup declarations contained or pointed to by the document type declaration must be well-formed.
+clj꞉musicxml-parser.core꞉> 
+; Execution error (SAXParseException) at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper/createSAXParseException (REPL:-1).
+; The markup declarations contained or pointed to by the document type declaration must be well-formed.
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/nzb->map
+clj꞉musicxml-parser.core꞉> 
+; Execution error (SAXParseException) at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper/createSAXParseException (REPL:-1).
+; The markup declarations contained or pointed to by the document type declaration must be well-formed.
+clj꞉musicxml-parser.core꞉> 
+#'musicxml-parser.core/nzb->map
+clj꞉musicxml-parser.core꞉> 
+; Execution error (SAXParseException) at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper/createSAXParseException (REPL:-1).
+; The markup declarations contained or pointed to by the document type declaration must be well-formed.
+clj꞉musicxml-parser.core꞉> 
+{:meta {:title "Your File!", :tag "Example"},
+ :files
+ [{:poster "Joe Bloggs <bloggs@nowhere.example>",
+   :date 1071674882,
+   :subject "Here's your file!  abc-mr2a.r01 (1/2)",
+   :groups ["alt.binaries.newzbin" "alt.binaries.mojo"],
+   :segments
+   [{:bytes 102394, :number 1, :id "123456789abcdef@news.newzbin.com"}
+    {:bytes 4501, :number 2, :id "987654321fedbca@news.newzbin.com"}]}]}
+clj꞉musicxml-parser.core꞉> 
+{:meta {}, :files []}
+clj꞉musicxml-parser.core꞉> 
+{:meta {:title "Your File!", :tag "Example"},
+ :files
+ [{:poster "Joe Bloggs <bloggs@nowhere.example>",
+   :date 1071674882,
+   :subject "Here's your file!  abc-mr2a.r01 (1/2)",
+   :groups ["alt.binaries.newzbin" "alt.binaries.mojo"],
+   :segments
+   [{:bytes 102394, :number 1, :id "123456789abcdef@news.newzbin.com"}
+    {:bytes 4501, :number 2, :id "987654321fedbca@news.newzbin.com"}]}]}
+clj꞉musicxml-parser.core꞉> 
+#object[clojure.lang.Var$Unbound 0x4286fabd "Unbound: #'musicxml-parser.core/beethoven"]
+clj꞉musicxml-parser.core꞉> 
+; Execution error (IOException) at sun.net.www.protocol.http.HttpURLConnection/getInputStream0 (REPL:-1).
+; Server returned HTTP response code: 403 for URL: http://www.musicxml.org/dtds/partwise.dtd
+clj꞉musicxml-parser.core꞉> 
+[{:tag :nzb,
+  :attrs {:xmlns "http://www.newzbin.com/DTD/2003/nzb"},
+  :content
+  [{:tag :head,
+    :attrs nil,
+    :content
+    [{:tag :meta, :attrs {:type "title"}, :content ["Your File!"]}
+     {:tag :meta, :attrs {:type "tag"}, :content ["Example"]}]}
+   {:tag :file,
+    :attrs
+    {:subject "Here's your file!  abc-mr2a.r01 (1/2)",
+     :date "1071674882",
+     :poster "Joe Bloggs <bloggs@nowhere.example>"},
+    :content
+    [{:tag :groups,
+      :attrs nil,
+      :content
+      [{:tag :group, :attrs nil, :content ["alt.binaries.newzbin"]}
+       {:tag :group, :attrs nil, :content ["alt.binaries.mojo"]}]}
+     {:tag :segments,
+      :attrs nil,
+      :content
+      [{:tag :segment, :attrs {:number "1", :bytes "102394"}, :content ["123456789abcdef@news.newzbin.com"]}
+       {:tag :segment, :attrs {:number "2", :bytes "4501"}, :content ["987654321fedbca@news.newzbin.com"]}]}]}]}
+ nil]
+clj꞉musicxml-parser.core꞉> 
+#object[java.io.BufferedInputStream 0x2f30b288 "java.io.BufferedInputStream@2f30b288"]
+clj꞉musicxml-parser.core꞉> 
