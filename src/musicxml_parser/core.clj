@@ -42,51 +42,23 @@
   [measure-node]
   (zip-xml/xml-> measure-node :note))
 
-(-> "resources/test.musicxml"
-    parts
-    first
-    measures
-    first
-    notes
-    first
-    zip/node)
+(defn chord? 
+  "Returns non-nil if a note is the member of a chord."
+  [note]
+   (zip-xml/xml1-> note :chord))
 
-(defn meta->map
-  [root]
-  (into {}
-        (for [m (zip-xml/xml-> root :head :meta)]
-          [(keyword (zip-xml/attr m :type))
-           (zip-xml/text m)])))
+(defn pitch
+  "Returns the note's pitch, or `nil` if it is a rest."
+  [note]
+  (zip-xml/text (zip-xml/xml1-> note :pitch)))
 
-(defn segment->map
-  [seg]
-  {:bytes  (Long/valueOf (zip-xml/attr seg :bytes))
-   :number (Integer/valueOf (zip-xml/attr seg :number))
-   :id     (zip-xml/xml1-> seg zip-xml/text)})
-
-(defn file->map
-  [file]
-  {:poster   (zip-xml/attr file :poster)
-   :date     (Long/valueOf (zip-xml/attr file :date))
-   :subject  (zip-xml/attr file :subject)
-   :groups   (vec (zip-xml/xml-> file :groups :group zip-xml/text))
-   :segments (mapv segment->map
-                   (zip-xml/xml-> file :segments :segment))})
-
-(defn nzb->map [input]
-  (let [root (-> input
-                 io/input-stream
-                 (xml/parse startparse-sax)
-                 zip/xml-zip)]
-    {:meta  (meta->map root)
-     :files (mapv file->map (zip-xml/xml-> root :file))}))
-
-(-> "resources/example.nzb"
-    (xml/parse startparse-sax)
-    zip/xml-zip
-    zip/down
-    zip/node)
-
-(nzb->map "resources/Piano-Sonata-n01.musicxml")
-
-(nzb->map "resources/example.nzb")
+ (-> "resources/test2.musicxml"
+     parts
+     first
+     measures
+     first
+     notes
+     (nth 3)
+     pitch
+    
+     )
