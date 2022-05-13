@@ -15,6 +15,42 @@
     (let [^SAXParser parser (.newSAXParser factory)]
       (.parse parser s ch))))
 
+(defn parts 
+  "Outputs a zipper representing a sequence of parts from a musicxml file."
+  [file]
+  (-> file
+      (xml/parse startparse-sax)
+      zip/xml-zip
+      (zip-xml/xml-> :score-partwise :part)))
+
+(parts "resources/test.musicxml")
+
+(defn measures 
+  "Takes a zipper from a parts node and outputs that part's measures."
+  [part-node]
+  (zip-xml/xml-> part-node :measure))
+
+(-> "resources/test.musicxml"
+    parts
+    first
+    measures
+    first
+ )
+
+(defn notes
+  "Takes a zipper from a measure node and outputs that measure's notes."
+  [measure-node]
+  (zip-xml/xml-> measure-node :note))
+
+(-> "resources/test.musicxml"
+    parts
+    first
+    measures
+    first
+    notes
+    first
+    zip/node)
+
 (defn meta->map
   [root]
   (into {}
@@ -46,11 +82,10 @@
      :files (mapv file->map (zip-xml/xml-> root :file))}))
 
 (-> "resources/example.nzb"
-    io/input-stream
     (xml/parse startparse-sax)
-    zip/xml-zip)
-
-(io/input-stream "resources/example.nzb")
+    zip/xml-zip
+    zip/down
+    zip/node)
 
 (nzb->map "resources/Piano-Sonata-n01.musicxml")
 
