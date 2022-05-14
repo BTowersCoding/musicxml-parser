@@ -14,3 +14,4 @@ pom.xml.asc
 .calva/
 .lsp/
 .clj-kondo/.cache/
+.calva/output-window/output.calva-repl

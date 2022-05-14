@@ -23,19 +23,10 @@
       zip/xml-zip
       (zip-xml/xml-> :score-partwise :part)))
 
-(parts "resources/test.musicxml")
-
 (defn measures 
   "Takes a zipper from a parts node and outputs that part's measures."
   [part-node]
   (zip-xml/xml-> part-node :measure))
-
-(-> "resources/test.musicxml"
-    parts
-    first
-    measures
-    first
- )
 
 (defn notes
   "Takes a zipper from a measure node and outputs that measure's notes."
@@ -43,22 +34,35 @@
   (zip-xml/xml-> measure-node :note))
 
 (defn chord? 
-  "Returns non-nil if a note is the member of a chord."
+  "Returns non-nil if a note is tagged `chord`,
+   meaning it does not advance the beat.
+   A `chord` must be accompanied by exactly one note
+   that plays at the same time that is _not_ a chord."
   [note]
    (zip-xml/xml1-> note :chord))
 
 (defn pitch
   "Returns the note's pitch, or `nil` if it is a rest."
   [note]
-  (zip-xml/text (zip-xml/xml1-> note :pitch)))
+  (when (zip-xml/xml1-> note :pitch)
+    (zip-xml/text (zip-xml/xml1-> note :pitch))))
 
- (-> "resources/test2.musicxml"
-     parts
-     first
-     measures
-     first
-     notes
-     (nth 3)
-     pitch
-    
-     )
+(defn beats 
+  "Takes a sequence of notes and"
+  [notes]
+  (loop [result [] coll notes]
+    (if (empty? coll)
+      result
+      (recur (conj result (into [(pitch (first coll))]
+                                (map pitch (take-while #(chord? %) (rest coll)))))
+             (drop-while #(chord? %) (rest coll))))))
+
+(comment
+  (->> "resources/test2.musicxml"
+       parts
+       first
+       measures
+       first
+       notes
+       beats)
+  )
