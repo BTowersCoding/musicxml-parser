@@ -3,7 +3,7 @@
             [clojure.zip :as zip]
             [clojure.java.io :as io]
             [clojure.data.zip.xml :as zip-xml])
-  (:import (javax.xml.parsers SAXParser SAXParserFactory)))
+  (:import (javax.xml.parsers SAXParser SAXParserFactory)))\
 
 ;; MusicXML example set: https://www.musicxml.com/music-in-musicxml/example-set/
 
@@ -48,7 +48,8 @@
     (zip-xml/text (zip-xml/xml1-> note :pitch))))
 
 (defn beats 
-  "Takes a sequence of notes and"
+  "Takes a sequence of notes and partitions them into beats,
+   with respect to the notes that are members of chords."
   [notes]
   (loop [result [] coll notes]
     (if (empty? coll)
